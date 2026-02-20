@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>다이캐스팅 품질 예측 AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="index.css" />
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.8/dist/purify.min.js"></script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-brand">
+      <span class="dot"></span>
+      GS Steel
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">서비스</a></li>
+      <li><a href="#engineering">기술력</a></li>
+      <li><a href="#stats">성과</a></li>
+      <li><a href="#contact">문의</a></li>
+    </ul>
+    <a href="chat.html" class="nav-cta">AI 도우미 시작하기</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-number animate-fade-in-up">제조 공정 도우미<br><span>with GS네오텍</span></div>
+      <p class="hero-tagline animate-fade-in-up animate-delay-1">
+        <strong>다이캐스팅 공정</strong>의 품질 예측과 분석을 위한 지능형 도우미
+      </p>
+      
+      <!-- Interactive Die Casting Process Visualization -->
+      <div class="process-visualization animate-fade-in animate-delay-2" style="max-width: 100%; min-height: 320px; padding: 20px; background: rgba(13, 20, 51, 0.6); border-radius: 16px; border: 1px solid rgba(59, 130, 246, 0.2); position: relative; overflow: hidden;">
+        
+        <!-- Process Flow Animation -->
+        <div class="process-flow">
+          <div class="process-stage" data-stage="melting">
+            <div class="stage-icon">
+              <img src="다운로드.jpeg" alt="용탕로" />
+            </div>
+            <span class="stage-label">용탕로</span>
+            <div class="stage-data">
+              <span class="data-value" id="temp-value">685°C</span>
+            </div>
+          </div>
+
+          <div class="process-arrow">
+            <div class="arrow-line"></div>
+            <div class="flow-particle"></div>
+          </div>
+
+          <div class="process-stage" data-stage="injection">
+            <div class="stage-icon">
+              <img src="images2.jpeg" alt="사출" />
+            </div>
+            <span class="stage-label">사출</span>
+            <div class="stage-data">
+              <span class="data-value" id="pressure-value">145 MPa</span>
+            </div>
+          </div>
+
+          <div class="process-arrow">
+            <div class="arrow-line"></div>
+            <div class="flow-particle"></div>
+          </div>
+
+          <div class="process-stage" data-stage="cooling">
+            <div class="stage-icon">
+              <img src="image3.avif" alt="냉각" />
+            </div>
+            <span class="stage-label">냉각</span>
+            <div class="stage-data">
+              <span class="data-value" id="cooling-value">10.5s</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <a href="chat.html" class="hero-cta-btn animate-slide-right animate-delay-1" style="margin-bottom: 28px;">
+        AI 도우미 시작하기
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <p class="hero-desc animate-slide-right animate-delay-2">
+        AI 기반 품질 예측 · 실시간 원인 분석 · 공정 지식 검색
+      </p>
+      <ul class="hero-bullets">
+        <li class="animate-slide-right animate-delay-3">
+          <span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6L5 8.5L9.5 3.5" stroke="#60a5fa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span><strong>ML 품질 예측</strong> — 양품/불량 확률 예측</span>
+        </li>
+        <li class="animate-slide-right animate-delay-4">
+          <span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6L5 8.5L9.5 3.5" stroke="#60a5fa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span><strong>XAI 근거 분석</strong> — 장비·센서 연결 인사이트</span>
+        </li>
+        <li class="animate-slide-right animate-delay-5">
+          <span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6L5 8.5L9.5 3.5" stroke="#60a5fa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span><strong>통합 지식 검색</strong> — 분산 문서 통합 조회</span>
+        </li>
+        <li class="animate-slide-right animate-delay-6">
+          <span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6L5 8.5L9.5 3.5" stroke="#60a5fa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span><strong>자동 의도 분류</strong> — 자연어 질의 자동 분석</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-card-bg"></div>
+        <span class="service-plus">+</span>
+        <div class="service-card-content">
+          <div class="service-label">품질 예측 &middot; XAI 분석</div>
+          <h3 class="service-title">
+            <em>Production</em><br />
+            품질 예측 및<br />
+            원인 분석 시스템
+          </h3>
+          <a href="#" class="learn-more-btn">
+            Learn more
+            <span class="arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M4 3L8 6L4 9" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-bg"></div>
+        <span class="service-plus">+</span>
+        <div class="service-card-content">
+          <div class="service-label">Knowledge Base</div>
+          <h3 class="service-title">
+            <em>Maintenance</em><br />
+            공정 지식 검색 및<br />
+            장비 관리
+          </h3>
+          <a href="#" class="learn-more-btn">
+            Learn more
+            <span class="arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M4 3L8 6L4 9" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="index.js"></script>
+</body>
+</html>

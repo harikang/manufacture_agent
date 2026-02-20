@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+.venv/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Models (large files)
+*.pkl
+*.pth
+*.npy
+*.npz
+*.zip
+*.h5
+
+# Temporary
+*.tmp
+catboost_info/
+
+# Secrets & Config (실제 값이 포함된 파일)
+config/lambda_t*_url.txt
+config/knowledge_base_id.txt
+config/streamlit_*.txt
+config/task-definition.json
+
+# Data
+*.csv
+*.xlsx
+
+# Lambda layer
+lambda-layer/
+
+# Backup files
+*_backup*

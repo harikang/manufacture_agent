@@ -1,0 +1,18 @@
+FROM public.ecr.aws/lambda/python:3.11
+
+# 필요한 패키지 설치 (두 단계로 분리)
+RUN pip install --no-cache-dir \
+    numpy==2.2.1 \
+    scipy==1.14.1 \
+    scikit-learn==1.6.1 \
+    boto3
+
+RUN pip install --no-cache-dir \
+    torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+
+# Lambda 함수 코드 복사
+COPY lambda_t1_predict.py ${LAMBDA_TASK_ROOT}/
+COPY autoencoder_model_lambda.py ${LAMBDA_TASK_ROOT}/
+
+# Handler 설정
+CMD ["lambda_t1_predict.lambda_handler"]

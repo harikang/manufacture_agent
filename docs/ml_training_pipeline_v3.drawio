@@ -1,0 +1,226 @@
+<mxfile host="app.diagrams.net" modified="2026-02-03T00:00:00.000Z" agent="Kiro" version="22.1.0">
+  <diagram name="ML Training Pipeline" id="ml-training-pipeline-v3">
+    <mxGraphModel dx="1434" dy="780" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Title -->
+        <mxCell id="title" value="ML Training Pipeline - Weekly Cron" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="500" y="20" width="400" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Edge Device -->
+        <mxCell id="edge-cluster" value="Edge Data Source" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;verticalAlign=top;fontStyle=1;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="40" y="100" width="160" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="factory" value="Manufacturing&#xa;Edge Device" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=#60A337;gradientDirection=north;fillColor=#277116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.iot_factory;" vertex="1" parent="1">
+          <mxGeometry x="60" y="140" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="sensor" value="Sensor&#xa;Data" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=#60A337;gradientDirection=north;fillColor=#277116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.iot_sensor;" vertex="1" parent="1">
+          <mxGeometry x="130" y="140" width="50" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Scheduler -->
+        <mxCell id="scheduler-cluster" value="Scheduler (Weekly)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;dashed=1;verticalAlign=top;fontStyle=1;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="40" y="280" width="160" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="eventbridge" value="EventBridge&#xa;Scheduler" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=#FF4F8B;gradientDirection=north;fillColor=#BC1356;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.eventbridge;" vertex="1" parent="1">
+          <mxGeometry x="60" y="320" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="lambda-orch" value="Lambda&#xa;Orchestrator" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=#F78E04;gradientDirection=north;fillColor=#D05C17;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;" vertex="1" parent="1">
+          <mxGeometry x="130" y="320" width="50" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- S3 Raw Data -->
+        <mxCell id="datalake-cluster" value="Data Lake" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;dashed=1;verticalAlign=top;fontStyle=1;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="260" y="180" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="s3-raw" value="Raw Data&#xa;Bucket" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=#60A337;gradientDirection=north;fillColor=#277116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" vertex="1" parent="1">
+          <mxGeometry x="295" y="210" width="50" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Glue Data Quality -->
+        <mxCell id="glue-cluster" value="Data Quality" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;dashed=1;verticalAlign=top;fontStyle=1;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="440" y="180" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="glue-dq" value="Glue Data&#xa;Quality" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=#4AB29A;gradientDirection=north;fillColor=#116D5B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.glue;" vertex="1" parent="1">
+          <mxGeometry x="475" y="210" width="50" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Quality Rules -->
+        <mxCell id="rules-cluster" value="Quality Rules" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;dashed=1;verticalAlign=top;fontStyle=1;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="620" y="80" width="180" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="hard-fail" value="Hard Fail&#xa;(Stop)" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=#F34482;gradientDirection=north;fillColor=#BC1356;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudwatch_alarm;" vertex="1" parent="1">
+          <mxGeometry x="685" y="120" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="soft-fail" value="Soft Fail&#xa;(Fix)" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=#F34482;gradientDirection=north;fillColor=#BC1356;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudwatch_alarm;" vertex="1" parent="1">
+          <mxGeometry x="685" y="210" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="warn" value="Warning&#xa;(Tag)" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=#F34482;gradientDirection=north;fillColor=#BC1356;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudwatch_alarm;" vertex="1" parent="1">
+          <mxGeometry x="685" y="300" width="50" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- SageMaker Training -->
+        <mxCell id="training-cluster" value="ML Training" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;dashed=1;verticalAlign=top;fontStyle=1;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="860" y="180" width="160" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="sagemaker" value="SageMaker&#xa;Training Job" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=#4AB29A;gradientDirection=north;fillColor=#116D5B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sagemaker_training_job;" vertex="1" parent="1">
+          <mxGeometry x="880" y="220" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="model" value="Model&#xa;Artifact" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=#4AB29A;gradientDirection=north;fillColor=#116D5B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sagemaker_model;" vertex="1" parent="1">
+          <mxGeometry x="950" y="220" width="50" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Model S3 -->
+        <mxCell id="model-cluster" value="Model Registry" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;dashed=1;verticalAlign=top;fontStyle=1;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="1080" y="180" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="s3-model" value="Model&#xa;Artifacts S3" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=#60A337;gradientDirection=north;fillColor=#277116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" vertex="1" parent="1">
+          <mxGeometry x="1115" y="210" width="50" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Monitoring -->
+        <mxCell id="cloudwatch" value="CloudWatch&#xa;Monitoring" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=#F34482;gradientDirection=north;fillColor=#BC1356;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudwatch;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="420" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="sns" value="SNS&#xa;Alerts" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=#FF4F8B;gradientDirection=north;fillColor=#BC1356;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sns;" vertex="1" parent="1">
+          <mxGeometry x="1115" y="420" width="50" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrows -->
+        <!-- Factory to Sensor -->
+        <mxCell id="arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#006600;strokeWidth=2;" edge="1" parent="1" source="factory" target="sensor">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Sensor to S3 Raw -->
+        <mxCell id="arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#006600;strokeWidth=2;" edge="1" parent="1" source="sensor" target="s3-raw">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- EventBridge to Lambda -->
+        <mxCell id="arrow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#FF8C00;strokeWidth=2;" edge="1" parent="1" source="eventbridge" target="lambda-orch">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Lambda to S3 Raw -->
+        <mxCell id="arrow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0066CC;strokeWidth=2;" edge="1" parent="1" source="lambda-orch" target="s3-raw">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- S3 Raw to Glue -->
+        <mxCell id="arrow5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#9933FF;strokeWidth=2;" edge="1" parent="1" source="s3-raw" target="glue-dq">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Glue to Hard Fail -->
+        <mxCell id="arrow6" value="Hard Fail" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#CC0000;strokeWidth=2;fontColor=#CC0000;" edge="1" parent="1" source="glue-dq" target="hard-fail">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Glue to Soft Fail -->
+        <mxCell id="arrow7" value="Soft Fail" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#FF8C00;strokeWidth=2;fontColor=#FF8C00;" edge="1" parent="1" source="glue-dq" target="soft-fail">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Glue to Warning -->
+        <mxCell id="arrow8" value="Warning" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#FFD700;strokeWidth=2;fontColor=#CC9900;" edge="1" parent="1" source="glue-dq" target="warn">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Hard Fail to SNS -->
+        <mxCell id="arrow9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#CC0000;strokeWidth=2;dashed=1;" edge="1" parent="1" source="hard-fail" target="sns">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="800" y="145" />
+              <mxPoint x="800" y="445" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Soft Fail to SageMaker -->
+        <mxCell id="arrow10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#009900;strokeWidth=2;" edge="1" parent="1" source="soft-fail" target="sagemaker">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Warning to SageMaker -->
+        <mxCell id="arrow11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#009900;strokeWidth=2;" edge="1" parent="1" source="warn" target="sagemaker">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="820" y="325" />
+              <mxPoint x="820" y="245" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- SageMaker to Model -->
+        <mxCell id="arrow12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0066CC;strokeWidth=2;" edge="1" parent="1" source="sagemaker" target="model">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Model to S3 Model -->
+        <mxCell id="arrow13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000066;strokeWidth=2;" edge="1" parent="1" source="model" target="s3-model">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- SageMaker to CloudWatch -->
+        <mxCell id="arrow14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=1;dashed=1;" edge="1" parent="1" source="sagemaker" target="cloudwatch">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Warning to CloudWatch -->
+        <mxCell id="arrow15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#FFD700;strokeWidth=1;dashed=1;" edge="1" parent="1" source="warn" target="cloudwatch">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="710" y="420" />
+              <mxPoint x="710" y="445" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- CloudWatch to SNS -->
+        <mxCell id="arrow16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=1;dashed=1;" edge="1" parent="1" source="cloudwatch" target="sns">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Legend -->
+        <mxCell id="legend" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=0" vertex="1" parent="1">
+          <mxGeometry x="40" y="460" width="300" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-title" value="Legend" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="50" y="465" width="100" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend1" value="" style="endArrow=classic;html=1;strokeColor=#CC0000;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="60" y="505" as="sourcePoint" />
+            <mxPoint x="110" y="505" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend1-text" value="Hard Fail (Stop Training)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="120" y="495" width="150" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend2" value="" style="endArrow=classic;html=1;strokeColor=#FF8C00;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="60" y="530" as="sourcePoint" />
+            <mxPoint x="110" y="530" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend2-text" value="Soft Fail (Fix &amp; Continue)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="120" y="520" width="150" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend3" value="" style="endArrow=classic;html=1;strokeColor=#FFD700;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="60" y="555" as="sourcePoint" />
+            <mxPoint x="110" y="555" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend3-text" value="Warning (Tag &amp; Continue)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="120" y="545" width="150" height="20" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

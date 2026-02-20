@@ -1,0 +1,138 @@
+{
+  "n_features": 25,
+  "total_dim": 37,
+  "selected_features": [
+    "Process_Shot",
+    "Process_High_Velocity",
+    "Sensor_Factory_Humidity",
+    "Sensor_Melting_Furnace_Temp",
+    "Process_Spray_Time",
+    "Sensor_Coolant_Pressure",
+    "Sensor_Air_Pressure",
+    "Process_Casting_Pressure",
+    "Process_Velocity_3",
+    "Process_Velocity_1",
+    "Sensor_Factory_Temp",
+    "Process_ Pressure_Rise_Time",
+    "Process_Clamping_Force",
+    "Process_Velocity_2",
+    "Process_Biscuit_Thickness",
+    "Process_Rapid_Rise_Time",
+    "Process_Cycle_Time",
+    "Sensor_Coolant_Temp",
+    "Process_Cylinder_Pressure",
+    "Process_Spray_1_Time",
+    "Process_Spray_2_Time",
+    "Process_Product_Type",
+    "Sensor_Coolant_Temp_Max",
+    "Sensor_Coolant_Temp_Min",
+    "Sensor_Air_Pressure_Max"
+  ],
+  "performance": {
+    "f1_score": 0.696969696969697,
+    "accuracy": 0.880557398805574,
+    "roc_auc": 0.9106010295554285
+  },
+  "feature_importance": [
+    {
+      "Feature": "Process_Shot",
+      "Importance": 0.08402417649459398
+    },
+    {
+      "Feature": "Process_High_Velocity",
+      "Importance": 0.05907041097343582
+    },
+    {
+      "Feature": "Sensor_Factory_Humidity",
+      "Importance": 0.054337475607175424
+    },
+    {
+      "Feature": "Sensor_Melting_Furnace_Temp",
+      "Importance": 0.048054466612333285
+    },
+    {
+      "Feature": "Process_Spray_Time",
+      "Importance": 0.04621216510306057
+    },
+    {
+      "Feature": "Sensor_Coolant_Pressure",
+      "Importance": 0.043906327513866854
+    },
+    {
+      "Feature": "Sensor_Air_Pressure",
+      "Importance": 0.029293723141384363
+    },
+    {
+      "Feature": "Process_Casting_Pressure",
+      "Importance": 0.028092646291965628
+    },
+    {
+      "Feature": "Process_Velocity_3",
+      "Importance": 0.02644498364126911
+    },
+    {
+      "Feature": "Process_Velocity_1",
+      "Importance": 0.02189191174554212
+    },
+    {
+      "Feature": "Sensor_Factory_Temp",
+      "Importance": 0.02001653330925027
+    },
+    {
+      "Feature": "Process_ Pressure_Rise_Time",
+      "Importance": 0.019860938702319836
+    },
+    {
+      "Feature": "Process_Clamping_Force",
+      "Importance": 0.01876342965814453
+    },
+    {
+      "Feature": "Process_Velocity_2",
+      "Importance": 0.017434623537195448
+    },
+    {
+      "Feature": "Process_Biscuit_Thickness",
+      "Importance": 0.016002489990920125
+    },
+    {
+      "Feature": "Process_Rapid_Rise_Time",
+      "Importance": 0.014112598946992228
+    },
+    {
+      "Feature": "Process_Cycle_Time",
+      "Importance": 0.012172843922120228
+    },
+    {
+      "Feature": "Sensor_Coolant_Temp",
+      "Importance": 0.009854607601022004
+    },
+    {
+      "Feature": "Process_Cylinder_Pressure",
+      "Importance": 0.0042895317080503224
+    },
+    {
+      "Feature": "Process_Spray_1_Time",
+      "Importance": 0.0036071811623679525
+    },
+    {
+      "Feature": "Process_Spray_2_Time",
+      "Importance": 0.0031436145159050837
+    },
+    {
+      "Feature": "Process_Product_Type",
+      "Importance": 2.7517963158666698e-05
+    },
+    {
+      "Feature": "Sensor_Coolant_Temp_Max",
+      "Importance": 0.0
+    },
+    {
+      "Feature": "Sensor_Coolant_Temp_Min",
+      "Importance": 0.0
+    },
+    {
+      "Feature": "Sensor_Air_Pressure_Max",
+      "Importance": 0.0
+    }
+  ]
+}

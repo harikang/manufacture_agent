@@ -1,0 +1,31 @@
+{
+  "equipment_list": [
+    {
+      "id": "melting_furnace",
+      "name": "용탕로",
+      "name_en": "Melting Furnace",
+      "description": "알루미늄 합금을 용융시키는 장비",
+      "related_features": ["Process_Temperature", "Process_MeltTemperature", "Sensor_Temperature1"]
+    },
+    {
+      "id": "injection_unit",
+      "name": "사출 유닛",
+      "name_en": "Injection Unit",
+      "description": "용탕을 금형에 주입하는 장비",
+      "related_features": ["Process_Pressure", "Process_InjectionSpeed", "Sensor_Pressure1"]
+    },
+    {
+      "id": "cooling_system",
+      "name": "냉각 시스템",
+      "name_en": "Cooling System",
+      "description": "제품을 냉각시키는 시스템",
+      "related_features": ["Process_CoolingTime", "Sensor_Flow", "Sensor_Temperature2"]
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "last_updated": "2026-01-26",
+    "total_equipment": 3,
+    "total_features": 30
+  }
+}

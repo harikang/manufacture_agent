@@ -1,0 +1,178 @@
+{
+  "equipment": {
+    "melting_furnace": {
+      "name": "용탕로",
+      "name_en": "Melting Furnace",
+      "description": "알루미늄 합금을 용융시키는 핵심 장비입니다. 용탕 온도와 품질에 직접적인 영향을 미칩니다.",
+      "related_features": ["Process_Temperature", "Process_MeltTemperature", "Sensor_Temperature1"],
+      "action": "온도 편차가 클 경우 버너 상태 및 열전대 교정을 확인하세요."
+    },
+    "injection_unit": {
+      "name": "사출 유닛",
+      "name_en": "Injection Unit",
+      "description": "용탕을 금형에 고속으로 주입하는 장비입니다. 사출 압력과 속도가 제품 밀도에 영향을 줍니다.",
+      "related_features": ["Process_Pressure", "Process_InjectionSpeed", "Process_InjectionTime", "Sensor_Pressure1", "Sensor_Pressure2"],
+      "action": "압력 이상 시 유압 시스템 및 플런저 마모 상태를 점검하세요."
+    },
+    "cooling_system": {
+      "name": "냉각 시스템",
+      "name_en": "Cooling System",
+      "description": "금형과 제품을 냉각시키는 시스템입니다. 냉각 시간과 온도 균일성이 수축 결함에 영향을 줍니다.",
+      "related_features": ["Process_CoolingTime", "Sensor_Flow", "Sensor_Temperature2", "Sensor_Temperature3"],
+      "action": "냉각수 유량과 온도를 확인하고, 냉각 채널 막힘 여부를 점검하세요."
+    },
+    "clamping_unit": {
+      "name": "클램핑 유닛",
+      "name_en": "Clamping Unit",
+      "description": "금형을 고정하고 사출 시 형체력을 유지하는 장비입니다. 형체력 부족 시 플래시 결함이 발생합니다.",
+      "related_features": ["Process_ClampForce", "Sensor_Pressure3"],
+      "action": "형체력 설정값과 실제 압력을 비교하고, 타이바 균형을 확인하세요."
+    },
+    "mold": {
+      "name": "금형",
+      "name_en": "Die/Mold",
+      "description": "제품 형상을 결정하는 핵심 도구입니다. 금형 온도와 상태가 표면 품질에 직접 영향을 줍니다.",
+      "related_features": ["Process_MoldTemperature", "Sensor_Temperature2", "Sensor_Temperature3"],
+      "action": "금형 표면 상태와 이형제 도포 상태를 확인하세요."
+    },
+    "hydraulic_system": {
+      "name": "유압 시스템",
+      "name_en": "Hydraulic System",
+      "description": "사출기의 동력을 제공하는 시스템입니다. 유압 압력과 유량이 사출 성능에 영향을 줍니다.",
+      "related_features": ["Process_BackPressure", "Sensor_Pressure1", "Sensor_Pressure2", "Sensor_Pressure3"],
+      "action": "유압유 레벨과 온도, 필터 상태를 점검하세요."
+    },
+    "screw_barrel": {
+      "name": "스크류/배럴",
+      "name_en": "Screw & Barrel",
+      "description": "재료를 가소화하고 계량하는 장비입니다. 스크류 속도와 배압이 용융 품질에 영향을 줍니다.",
+      "related_features": ["Process_ScrewSpeed", "Process_BackPressure", "Process_PlasticizingTime", "Sensor_Torque"],
+      "action": "스크류 마모 상태와 배럴 온도 분포를 확인하세요."
+    }
+  },
+  "sensors": {
+    "Sensor_Vibration": {
+      "name": "진동 센서",
+      "description": "장비의 진동 수준을 측정합니다. 비정상 진동은 베어링 마모나 불균형을 나타낼 수 있습니다.",
+      "unit": "mm/s",
+      "normal_range": "0.1 ~ 0.5",
+      "equipment": "사출 유닛"
+    },
+    "Sensor_Noise": {
+      "name": "소음 센서",
+      "description": "장비 작동 소음을 측정합니다. 급격한 소음 증가는 기계적 문제의 징후입니다.",
+      "unit": "dB",
+      "normal_range": "70 ~ 85",
+      "equipment": "전체 시스템"
+    },
+    "Sensor_Temperature1": {
+      "name": "용탕 온도 센서",
+      "description": "용탕로의 알루미늄 용탕 온도를 측정합니다. 품질에 가장 중요한 변수 중 하나입니다.",
+      "unit": "°C",
+      "normal_range": "660 ~ 720",
+      "equipment": "용탕로"
+    },
+    "Sensor_Temperature2": {
+      "name": "금형 온도 센서 (고정측)",
+      "description": "금형 고정측의 온도를 측정합니다. 금형 온도 균일성이 제품 품질에 영향을 줍니다.",
+      "unit": "°C",
+      "normal_range": "180 ~ 220",
+      "equipment": "금형"
+    },
+    "Sensor_Temperature3": {
+      "name": "금형 온도 센서 (가동측)",
+      "description": "금형 가동측의 온도를 측정합니다. 고정측과의 온도 차이가 크면 변형이 발생할 수 있습니다.",
+      "unit": "°C",
+      "normal_range": "175 ~ 215",
+      "equipment": "금형"
+    },
+    "Sensor_Pressure1": {
+      "name": "사출 압력 센서",
+      "description": "사출 시 용탕에 가해지는 압력을 측정합니다. 충진 불량과 직접 관련됩니다.",
+      "unit": "MPa",
+      "normal_range": "130 ~ 160",
+      "equipment": "사출 유닛"
+    },
+    "Sensor_Pressure2": {
+      "name": "보압 센서",
+      "description": "보압 단계의 압력을 측정합니다. 수축 결함 방지에 중요합니다.",
+      "unit": "MPa",
+      "normal_range": "90 ~ 120",
+      "equipment": "사출 유닛"
+    },
+    "Sensor_Pressure3": {
+      "name": "형체 압력 센서",
+      "description": "금형을 닫는 형체력을 측정합니다. 플래시 결함 방지에 중요합니다.",
+      "unit": "MPa",
+      "normal_range": "55 ~ 75",
+      "equipment": "클램핑 유닛"
+    },
+    "Sensor_Flow": {
+      "name": "냉각수 유량 센서",
+      "description": "냉각 시스템의 냉각수 유량을 측정합니다. 유량 저하 시 냉각 효율이 떨어집니다.",
+      "unit": "L/min",
+      "normal_range": "20 ~ 35",
+      "equipment": "냉각 시스템"
+    },
+    "Sensor_Position": {
+      "name": "위치 센서",
+      "description": "스크류 또는 플런저의 위치를 측정합니다. 샷 사이즈 제어에 사용됩니다.",
+      "unit": "mm",
+      "normal_range": "100 ~ 130",
+      "equipment": "사출 유닛"
+    },
+    "Sensor_Speed": {
+      "name": "사출 속도 센서",
+      "description": "사출 시 플런저의 이동 속도를 측정합니다. 충진 패턴에 영향을 줍니다.",
+      "unit": "m/s",
+      "normal_range": "2.0 ~ 4.0",
+      "equipment": "사출 유닛"
+    },
+    "Sensor_Torque": {
+      "name": "토크 센서",
+      "description": "스크류 회전 토크를 측정합니다. 재료 점도와 가소화 상태를 나타냅니다.",
+      "unit": "N·m",
+      "normal_range": "150 ~ 200",
+      "equipment": "스크류/배럴"
+    },
+    "Sensor_Current": {
+      "name": "전류 센서",
+      "description": "모터 전류를 측정합니다. 부하 상태와 에너지 효율을 모니터링합니다.",
+      "unit": "A",
+      "normal_range": "45 ~ 60",
+      "equipment": "유압 시스템"
+    },
+    "Sensor_Voltage": {
+      "name": "전압 센서",
+      "description": "공급 전압을 측정합니다. 전압 변동은 제어 정밀도에 영향을 줄 수 있습니다.",
+      "unit": "V",
+      "normal_range": "380 ~ 400",
+      "equipment": "전체 시스템"
+    }
+  },
+  "feature_to_equipment": {
+    "Process_Temperature": "melting_furnace",
+    "Process_Pressure": "injection_unit",
+    "Process_InjectionSpeed": "injection_unit",
+    "Process_InjectionTime": "injection_unit",
+    "Process_CoolingTime": "cooling_system",
+    "Process_ClampForce": "clamping_unit",
+    "Process_MoldTemperature": "mold",
+    "Process_MeltTemperature": "melting_furnace",
+    "Process_CycleTime": "injection_unit",
+    "Process_ShotSize": "injection_unit",
+    "Process_BackPressure": "screw_barrel",
+    "Process_ScrewSpeed": "screw_barrel",
+    "Process_HoldPressure": "injection_unit",
+    "Process_HoldTime": "injection_unit",
+    "Process_CushionPosition": "injection_unit",
+    "Process_PlasticizingTime": "screw_barrel"
+  },
+  "metadata": {
+    "version": "2.0.0",
+    "last_updated": "2026-01-30",
+    "total_equipment": 7,
+    "total_sensors": 14,
+    "total_features": 30
+  }
+}

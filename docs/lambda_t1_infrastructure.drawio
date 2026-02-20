@@ -1,0 +1,212 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Lambda T1 Infrastructure" id="lambda-infra">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1600">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Title -->
+        <mxCell id="title" value="Lambda T1 (Predict) 상세 인프라 아키텍처" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=26;fontStyle=1;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="600" y="20" width="1000" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Subtitle -->
+        <mxCell id="subtitle" value="AI Engineer가 로컬에서 학습한 모델을 Lambda에서 실행" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=16;fontColor=#666;" vertex="1" parent="1">
+          <mxGeometry x="600" y="70" width="1000" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Left: AI Engineer Local -->
+        <mxCell id="local-box" value="AI Engineer 로컬 환경" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;fontSize=18;fontStyle=1;verticalAlign=top;align=left;spacingLeft=15;spacingTop=15;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="50" y="130" width="450" height="700" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="local-data" value="📊 데이터 분석" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F57F17;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="180" width="390" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="local-data-detail" value="• DieCasting_Quality_Raw_Data.csv&#xa;• 7,535 samples, 30 features&#xa;• 불량률: 22.42%" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFDE7;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="240" width="390" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="local-train" value="🤖 모델 학습" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="320" width="390" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="local-train-detail" value="• AutoEncoder: 30D → 64 → 32 → 16 → 12D&#xa;• 4-head Attention Module&#xa;• Gradient Boosting: 200 estimators&#xa;• F1-Score: 0.7027, ROC-AUC: 0.9175" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="380" width="390" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="local-export" value="💾 모델 Export" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCCBC;strokeColor=#BF360C;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="480" width="390" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="local-files" value="deployment_models/&#xa;├─ autoencoder_latent12.pth (0.09 MB)&#xa;├─ gradient_boosting_model.pkl (1.27 MB)&#xa;└─ scaler.pkl (0.00 MB)&#xa;Total: 1.37 MB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;fontSize=11;align=left;spacingLeft=10;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="80" y="540" width="390" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="local-lambda" value="📝 Lambda 함수 코드" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B2DFDB;strokeColor=#00695C;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="660" width="390" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="local-lambda-detail" value="lambda_t1_predict.py&#xa;• AutoEncoder class 정의&#xa;• load_models() - 모델 로딩&#xa;• predict() - 추론 파이프라인" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2F1;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="720" width="390" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow to Docker -->
+        <mxCell id="arrow-docker" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=4;strokeColor=#1976D2;dashed=1;" edge="1" parent="1" source="local-lambda-detail" target="docker-box">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="760" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="arrow-docker-label" value="Docker 이미지 빌드" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=14;fontStyle=1;fontColor=#1976D2;" vertex="1" parent="1">
+          <mxGeometry x="320" y="850" width="180" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Middle: Docker & ECR -->
+        <mxCell id="docker-box" value="🐳 Docker 컨테이너" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#6A1B9A;fontSize=18;fontStyle=1;verticalAlign=top;align=left;spacingLeft=15;spacingTop=15;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="550" y="130" width="450" height="400" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="docker-file" value="Dockerfile" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#6A1B9A;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="180" width="390" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="docker-content" value="FROM public.ecr.aws/lambda/python:3.11&#xa;&#xa;# 모델 파일 복사&#xa;COPY models/autoencoder_latent12.pth /opt/ml/models/&#xa;COPY models/gradient_boosting_model.pkl /opt/ml/models/&#xa;COPY models/scaler.pkl /opt/ml/models/&#xa;&#xa;# 의존성 설치&#xa;RUN pip install torch scikit-learn numpy&#xa;&#xa;# Lambda 함수 복사&#xa;COPY lambda_t1_predict.py ${LAMBDA_TASK_ROOT}/&#xa;&#xa;CMD [&quot;lambda_t1_predict.lambda_handler&quot;]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;fontSize=11;align=left;spacingLeft=10;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="580" y="230" width="390" height="280" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="ecr-box" value="📦 Amazon ECR" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=18;fontStyle=1;verticalAlign=top;align=left;spacingLeft=15;spacingTop=15;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="550" y="560" width="450" height="270" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="ecr-repo" value="ECR Repository" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#E65100;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="610" width="390" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="ecr-images" value="Docker Images&#xa;&#xa;• diecasting-predict-t1:v1.0&#xa;• diecasting-predict-t1:v1.1&#xa;• diecasting-predict-t1:latest&#xa;&#xa;Image Size: ~500 MB&#xa;(Base: 400 MB + Models: 1.37 MB + Dependencies: ~100 MB)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="580" y="660" width="390" height="150" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow Docker to ECR -->
+        <mxCell id="arrow-ecr" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=4;strokeColor=#6A1B9A;" edge="1" parent="1" source="docker-content" target="ecr-repo">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow-ecr-label" value="docker push" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#6A1B9A;" vertex="1" parent="1">
+          <mxGeometry x="680" y="520" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Right: Lambda Infrastructure -->
+        <mxCell id="aws-cloud" value="AWS Cloud (ap-northeast-2)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#283593;fontSize=20;fontStyle=1;verticalAlign=top;align=left;spacingLeft=15;spacingTop=15;strokeWidth=4;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="130" width="1100" height="1400" as="geometry" />
+        </mxCell>
+        
+        <!-- VPC -->
+        <mxCell id="vpc" value="VPC (10.0.0.0/16)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;fontSize=18;fontStyle=1;verticalAlign=top;align=left;spacingLeft=15;spacingTop=15;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="180" width="1040" height="1320" as="geometry" />
+        </mxCell>
+        
+        <!-- Private Subnet -->
+        <mxCell id="private-subnet" value="Private Subnet - Lambda (10.0.3.0/24)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#F57F17;fontSize=16;fontStyle=1;verticalAlign=top;align=left;spacingLeft=15;spacingTop=15;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="240" width="980" height="1230" as="geometry" />
+        </mxCell>
+        
+        <!-- API Gateway -->
+        <mxCell id="apigw" value="API Gateway" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE4EC;strokeColor=#C2185B;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="290" width="200" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="apigw-detail" value="• REST API&#xa;• IAM Authentication&#xa;• Rate Limiting" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE4EC;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="360" width="200" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Lambda Function -->
+        <mxCell id="lambda-function" value="Lambda Function: diecasting-predict-t1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFECB3;strokeColor=#F57F17;fontSize=16;fontStyle=1;verticalAlign=top;align=left;spacingLeft=15;spacingTop=15;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="290" width="680" height="1150" as="geometry" />
+        </mxCell>
+        
+        <!-- Lambda Config -->
+        <mxCell id="lambda-config" value="⚙️ Lambda 구성" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F57F17;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="340" width="620" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="lambda-config-detail" value="• Runtime: Python 3.11 (Container)&#xa;• Memory: 2048 MB&#xa;• Timeout: 30 seconds&#xa;• Architecture: x86_64&#xa;• Image URI: <account-id>.dkr.ecr.ap-northeast-2.amazonaws.com/diecasting-predict-t1:v1.0" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFDE7;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="390" width="620" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- Lambda Execution -->
+        <mxCell id="lambda-exec" value="🚀 Lambda 실행 환경" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#0277BD;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="510" width="620" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Cold Start -->
+        <mxCell id="cold-start" value="❄️ Cold Start (최초 1회)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B3E5FC;strokeColor=#0277BD;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="560" width="620" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="cold-start-steps" value="1. Docker 컨테이너 시작&#xa;2. Python 런타임 초기화&#xa;3. load_models() 실행:&#xa;   ├─ AutoEncoder 로딩 (0.09 MB) → /opt/ml/models/autoencoder_latent12.pth&#xa;   ├─ Gradient Boosting 로딩 (1.27 MB) → /opt/ml/models/gradient_boosting_model.pkl&#xa;   └─ Scaler 로딩 (0.00 MB) → /opt/ml/models/scaler.pkl&#xa;4. 모델을 메모리에 캐싱 (전역 변수)&#xa;&#xa;소요 시간: ~2초" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5FE;fontSize=11;align=left;spacingLeft=10;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="605" width="620" height="165" as="geometry" />
+        </mxCell>
+        
+        <!-- Warm Execution -->
+        <mxCell id="warm-exec" value="🔥 Warm Execution (이후 요청)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="790" width="620" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="warm-steps" value="1️⃣ 입력 데이터 파싱 (30D features)&#xa;   {&quot;Process_Temperature&quot;: 650.5, &quot;Process_Pressure&quot;: 120.3, ...}&#xa;&#xa;2️⃣ Feature Extraction&#xa;   X = [650.5, 120.3, 2.5, ...] # 30 features&#xa;&#xa;3️⃣ Scaling (StandardScaler)&#xa;   X_scaled = scaler.transform(X)&#xa;&#xa;4️⃣ AutoEncoder Inference (PyTorch)&#xa;   X_tensor = torch.FloatTensor(X_scaled)&#xa;   latent, attention = autoencoder.encode(X_tensor)&#xa;   # latent: [12D vector]&#xa;&#xa;5️⃣ Feature Combination&#xa;   X_combined = np.hstack([X_scaled, latent])&#xa;   # X_combined: [42D vector]&#xa;&#xa;6️⃣ Gradient Boosting Prediction (scikit-learn)&#xa;   proba = gb_model.predict_proba(X_combined)&#xa;   pred_class = gb_model.predict(X_combined)&#xa;&#xa;7️⃣ 결과 생성 및 반환&#xa;   {&#xa;     &quot;prediction&quot;: {&quot;class&quot;: &quot;defect&quot;, &quot;probability&quot;: 0.78},&#xa;     &quot;latent_features&quot;: [0.12, -0.45, ...],&#xa;     &quot;model_version&quot;: &quot;v1.0_12D_GB&quot;,&#xa;     &quot;processing_time_ms&quot;: 15&#xa;   }&#xa;&#xa;소요 시간: ~15ms" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;fontSize=11;align=left;spacingLeft=10;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="835" width="620" height="420" as="geometry" />
+        </mxCell>
+        
+        <!-- Performance -->
+        <mxCell id="perf-box" value="📊 성능 지표" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="1275" width="620" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="perf-detail" value="• Cold Start: ~2s (모델 로딩)&#xa;• Warm Execution: ~15ms (추론)&#xa;• Memory Usage: ~1.5 GB / 2048 MB&#xa;• Concurrent Executions: 100&#xa;• F1-Score: 0.7027&#xa;• ROC-AUC: 0.9175&#xa;• Accuracy: 0.8832" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="1325" width="620" height="105" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrows -->
+        <mxCell id="arrow-ecr-lambda" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=4;strokeColor=#E65100;dashed=1;" edge="1" parent="1" source="ecr-images" target="lambda-config">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1020" y="735" />
+              <mxPoint x="1020" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="arrow-ecr-lambda-label" value="Lambda가 ECR 이미지 참조" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#E65100;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="500" width="220" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow-apigw-lambda" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#C2185B;" edge="1" parent="1" source="apigw-detail" target="lambda-exec">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow-apigw-lambda-label" value="Invoke" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#C2185B;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="400" width="60" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Legend -->
+        <mxCell id="legend-box" value="범례" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECEFF1;strokeColor=#37474F;fontSize=16;fontStyle=1;verticalAlign=top;align=left;spacingLeft=15;spacingTop=15;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="50" y="900" width="450" height="200" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend1" value="AI Engineer가 로컬에서 학습한 모델" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="950" width="390" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend2" value="Docker 컨테이너 이미지" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#6A1B9A;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="995" width="390" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend3" value="AWS Lambda 실행 환경" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFECB3;strokeColor=#F57F17;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1040" width="390" height="35" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,45 @@
+{
+  "family": "diecasting-backend-agent",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "512",
+  "memory": "1024",
+  "executionRoleArn": "arn:aws:iam::YOUR_ACCOUNT_ID:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::YOUR_ACCOUNT_ID:role/ecsTaskRole",
+  "containerDefinitions": [
+    {
+      "name": "backend-agent",
+      "image": "YOUR_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/diecasting-backend-agent:latest",
+      "portMappings": [
+        {
+          "containerPort": 8000,
+          "protocol": "tcp"
+        }
+      ],
+      "environment": [
+        {"name": "USE_MOCK", "value": "false"},
+        {"name": "MODEL_ID", "value": "us.anthropic.claude-sonnet-4-5-20250929-v1:0"},
+        {"name": "AWS_DEFAULT_REGION", "value": "us-east-1"},
+        {"name": "LAMBDA_T0_URL", "value": "YOUR_LAMBDA_T0_URL"},
+        {"name": "LAMBDA_T1_URL", "value": "YOUR_LAMBDA_T1_URL"},
+        {"name": "LAMBDA_T2_URL", "value": "YOUR_LAMBDA_T2_URL"},
+        {"name": "LAMBDA_T3_URL", "value": "YOUR_LAMBDA_T3_URL"}
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/diecasting-backend-agent",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "healthCheck": {
+        "command": ["CMD-SHELL", "curl -f http://localhost:8000/health || exit 1"],
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3,
+        "startPeriod": 60
+      }
+    }
+  ]
+}
